@@ -4,13 +4,12 @@
         <ul>
             <% data['sources'].forEach(function(imp){ %>
              <br>
-             <li><strong><%= imp['name'] %></strong></li>
+             <li><strong><a href="<%= imp['url'] %>"><%= imp['name'] %></a>
+             </strong></li>
              <br>
-             <li><%= imp['description'] %></li>
+             <p><%= imp['description'] %></p>
              <br>
-             <li><%= imp['url'], %></li>
-             <br>
-             <li><%= imp['category'], %></li>
+             <h6>Category: <%= imp['category'] %></h6>
           <% }) %>
          </ul>
         </div>

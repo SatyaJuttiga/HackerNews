@@ -81,11 +81,11 @@ app.get('/hackernews',function(req,res){
     });
 });
 
-app.get('/ask',function(req,res){
+app.get('/breakingnews',function(req,res){
     request('https://newsapi.org/v2/sources?apiKey=696fa0e753bd4c25a7989630619891e0',function(error,response,body){
         if(!error && response.statusCode == 200){
             var data=JSON.parse(body)
-            res.render('ask',{data:data});
+            res.render('breakingnews',{data:data});
         }
     });
 });
