@@ -4,7 +4,7 @@ var router = express.Router();
 var mongoose=require('mongoose');  
 
 //var routes=require('./routes/index');
-var User=require('./models/users');
+var User=require('./models/user');
 var bodyParser=require('body-parser');
 var request=require('request');
     passport=require('passport'),
