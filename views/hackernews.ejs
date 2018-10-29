@@ -4,13 +4,14 @@
         <ul>
             <% data['articles'].forEach(function(everything){ %>
              <br>
-             <li><strong><%= everything['title'] %></strong></li>
+             <br>
+             <li><strong><a href="<%= everything['url'] %>"><%= everything['title'] %></a>
+             </strong></li>
              <br>
              <li><%= everything['description'] %></li>
              <br>
              <li><%= everything['publishedAt'], %></li>
-             <br>
-             <a href="<%= everything['url'] %>">url</a>
+             
           <% }) %>
          </ul>
          </div>
