@@ -1,0 +1,17 @@
+<% include ../views/index %>
+<div>
+        <div class="container">
+        <ul>
+            <% data['sources'].forEach(function(imp){ %>
+             <br>
+             <li><strong><%= imp['name'] %></strong></li>
+             <br>
+             <li><%= imp['description'] %></li>
+             <br>
+             <li><%= imp['url'], %></li>
+             <br>
+             <li><%= imp['category'], %></li>
+          <% }) %>
+         </ul>
+        </div>
+  </div>
