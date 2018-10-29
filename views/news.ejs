@@ -3,11 +3,12 @@
 <ul>
    <% data['articles'].forEach(function(News){ %>
     <br>
-    <li><strong><%= News['title'] %></strong></li>
+    <li><strong><a href="<%= News['url'] %>"><%= News['title'] %></a>
+    </strong></li>
     <br>
-    <li><%= News['description'] %></li>
+    <p><%= News['description'] %></p>
     <br>
-    <li><a></a>></a><%= News['publishedAt'], %></li>
+    <h6> Published At:<%= News['publishedAt'] %></h6>
     <br>
  <% }) %>
 </ul>
