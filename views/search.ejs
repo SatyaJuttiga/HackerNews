@@ -1,0 +1,19 @@
+<% include ../views/index %>
+<div>
+        <div class="container">
+        <ul>
+            <% data['articles'].forEach(function(search){ %>
+             <br>
+             <li><strong><%= search['name'] %></strong></li>
+             <br>
+             <li><%= search['title'] %></li>
+             <br>
+             <li><%= search['description'] %></li>
+             <br>
+             <li><%= search['url'], %></li>
+             <br>
+             <li><%= search['publishedAt'], %></li>
+          <% }) %>
+         </ul>
+         </div>
+  </div>
