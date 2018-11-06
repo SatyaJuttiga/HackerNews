@@ -41,3 +41,13 @@ app.listen(3002,()=>{
     console.log('server started on 3002');
 });
 
+
+/*
+body 
+    {
+      background-color:rgb(109, 25, 77);
+      color:white;
+      font-family:"Courier New";
+      text-align:center;
+    }
+ */
