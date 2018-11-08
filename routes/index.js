@@ -1,53 +1,44 @@
 var express=require('express');
 var router=express.Router();
 var request=require('request');
+var passport=require('passport');
 var User=require('../models/user');
 
 router.get('/', function(req, res) {
     res.redirect('hackernews');
  });
 
+ const authCheck=(req,res,next) => {
+    if(!req.user){
+        res.redirect('/auth/login');
+    } else {
+        next();
+    }
+};
 
- router.get('/login',function(req,res){
-      res.render('login');
-  });
+ router.get('/google',passport.authenticate('google',{
+    scope:['profile']
+}));
 
-  router.get('/signup',function(req,res){
-      res.render('signup');
-  });
-
-  router.post('/signup',function(req,res){
-    req.body.username
-    req.body.password
-    User.register(new User({username:req.body.username}),req.body.password,function(err,user){
-        if(err){
-            console.log(err);
-            return res.render('signup');
-        }
-        passport.authenticate('local')(req,res,function(){
-            res.redirect('/');
-        });
-    });
+router.get('/google/redirect',passport.authenticate('google'),(req,res) => {
+    //res.send(req.user);
+    res.redirect('/hackernews');
 });
 
-router.post('/login',passport.authenticate('local',{
-    successRedirect:'/',
-    failureRedirect:'/login'
-}),function(req,res){
-});
 
 router.get('/logout',function(req,res){
     req.logout();
     res.redirect('/');
 });
 
-router.get('/hackernews',function(req,res){
+router.get('/hackernews',authCheck,function(req,res){
     request('https://newsapi.org/v2/everything?q=bitcoin&apiKey=696fa0e753bd4c25a7989630619891e0',function(error,response,body){
         if(!error && response.statusCode == 200){
             var data=JSON.parse(body)
             res.render('hackernews',{data:data});
         }
     });
+    res.send('You are logged in as' + " " + req.user.username);
 });
 
 router.get('/breakingnews',function(req,res){
