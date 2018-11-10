@@ -1,19 +1,17 @@
-var express = require('express');
-var path = require('path');
-var router = express.Router();
-var mongoose=require('mongoose');  
-
-var User=require('./models/user-model');
-var bodyParser=require('body-parser');
-var expressSession=require('express-session');
-var request=require('request');
+var express = require('express'),
+    path = require('path'),
+    router = express.Router(),
+     mongoose=require('mongoose'), 
+     User=require('./models/user-model'),
+     bodyParser=require('body-parser'),
+     expressSession=require('express-session'),
+    request=require('request'),
     passport=require('passport'),
     localStrategy=require('passport-local'),
     passportLocalMongoose=require('passport-local-mongoose'),
     indexRoutes=require('./routes/index'),
     authRoutes=require('./routes/auth-routes');
 
-    mongoose.connect('mongodb://localhost/hackernews');
 
 
 var app=express();
@@ -22,11 +20,11 @@ app.use(express.static('public'));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-app.use(require('express-session')({
-    secret:'bhavna juttiga',
-    resave:false,
-    saveUninitialized:false
+app.use(cookieSession({
+    maxAge:24 * 60 * 60 * 60 * 1000,
+    keys: [env.session.cookieKey]
 }));
+
 
 app.use(passport.initialize());
 app.use(passport.session());
@@ -42,18 +40,13 @@ app.use(function(req,res,next){
 app.use(indexRoutes);
 app.use(authRoutes);
 
+mongoose.connect(env.mongodb.dbURI,() => {
+    console.log('connected to mongo db');
+});
+
 
 app.listen(3002,()=>{
     console.log('server started on 3002');
 });
 
 
-/*
-body 
-    {
-      background-color:rgb(109, 25, 77);
-      color:white;
-      font-family:"Courier New";
-      text-align:center;
-    }
- */
