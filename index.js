@@ -5,6 +5,7 @@ var mongoose=require('mongoose');
 
 var User=require('./models/user-model');
 var bodyParser=require('body-parser');
+var expressSession=require('express-session');
 var request=require('request');
     passport=require('passport'),
     localStrategy=require('passport-local'),
