@@ -1,12 +1,17 @@
 
-    
+ 
 
-body 
+body   
     {
-      background-color:rgb(109, 25, 77);
-      color:white;
-      
+      background-size: cover;
+      background-image: url('https://ak1.picdn.net/shutterstock/videos/6691421/thumb/4.jpg');
+      color:whitesmoke;
       font-style: oblique;
       text-align:center;
     }
+    a:link
+    {
+      color:rgb(22, 17, 97);
+    }
+      
       

@@ -3,13 +3,14 @@ var path = require('path');
 var router = express.Router();
 var mongoose=require('mongoose');  
 
-var User=require('./models/user');
+var User=require('./models/user-model');
 var bodyParser=require('body-parser');
 var request=require('request');
     passport=require('passport'),
     localStrategy=require('passport-local'),
     passportLocalMongoose=require('passport-local-mongoose'),
-    indexRoutes=require('./routes/index');
+    indexRoutes=require('./routes/index'),
+    authRoutes=require('./routes/auth-routes');
 
     mongoose.connect('mongodb://localhost/hackernews');
 
@@ -38,6 +39,7 @@ app.use(function(req,res,next){
 });
 
 app.use(indexRoutes);
+app.use(authRoutes);
 
 
 app.listen(3002,()=>{
