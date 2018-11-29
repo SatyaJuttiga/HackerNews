@@ -1,0 +1,31 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+<div class="container">
+
+<table class="table table-striped">
+            
+    <thead>
+      <tr>
+        <th scope="col">#Serial Number</th>
+        <th scope="col">Name of the character</th>
+        <th scope="col">Home Planet</th>
+        <th scope="col">Species</th>
+      </tr>
+    </thead>
+    <tbody>
+            <% data['results'].forEach(function(info){ %>
+            <tr>
+                <ol>
+                        <th scope="row"><ol></ol></th>
+                   <td><%= info['name'] %></td>
+                    <td><%= info['homeworld'] %></td>
+                    <td>@<%= info['species'] %></td>
+                    </ol>
+            </tr>
+           
+            <% }) %>
+        
+    </tbody>
+  </table>
+
+  </div>
